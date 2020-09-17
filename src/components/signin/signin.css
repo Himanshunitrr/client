@@ -1,0 +1,39 @@
+.signin-container{
+  width: 550px;
+  height: 500px;
+  display: grid;
+  grid-template-columns: 20% 30% 30% 20%;
+  grid-template-rows: 5% 20% 75%;
+  grid-gap: 10px
+}
+.flag{
+  background: #ff416c;
+  background: -webkit-linear-gradient(to left, #ff5316, #ff1c57);
+  background: linear-gradient(to left, #ff5316, #ff1c57);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 70%, 0 100%);
+  color: white;
+  /* margin: 5 10px; */
+  /* font-size: 22px; */
+  text-align: center;
+}
+.flag h1{
+  font-size: 22px;
+}
+.signin{
+  grid-column: 2/3;
+  grid-row: 1/3;
+}
+.signup{
+  grid-column: 3/4;
+  grid-row: 1/3;
+}
+.signin-form{
+  background: #eee;
+  grid-row: 2/4;
+  grid-column: 1/5;
+}
+.signup-form{
+  display: none;
+  grid-row: 2/4;
+  grid-column: 1/5;
+}

@@ -3,3 +3,11 @@ body {
   box-sizing: border-box;
   /* overflow-x: hidden; */
 }
+.signin-container{
+  position: relative;
+  
+  left: 50%;
+  top: 500px;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}

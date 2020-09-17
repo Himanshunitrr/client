@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./navbar.css";
-import {Link} from "react-router-dom"
-import {FaBars} from "react-icons/fa"
-import BrandLogo from "./BrandLogo.jpg"
+import { Link } from "react-router-dom";
+import { FaBars } from "react-icons/fa";
+import BrandLogo from "./BrandLogo.jpg";
 
 export default class Navbar extends Component {
   handleClick = (event) => {
@@ -25,22 +25,38 @@ export default class Navbar extends Component {
         <div className="nav-links" id="nav-links-id">
           <div className="links">
             <div>
-              <Link className="nav-link" to="/">
-                Login
+              <Link
+                className="nav-link"
+                to="/signin"
+                onClick={this.handleClick}
+              >
+                Signin
               </Link>
             </div>
             <div>
-              <Link className="nav-link" to="/signup">
+              <Link
+                className="nav-link"
+                to="/signup"
+                onClick={this.handleClick}
+              >
                 Signup
               </Link>
             </div>
             <div>
-              <Link className="nav-link" to="/home">
+              <Link
+                className="nav-link"
+                to="/home"
+                onClick={this.handleClick}
+              >
                 Home
               </Link>
             </div>
             <div>
-              <Link className="nav-link" to="/profile">
+              <Link
+                className="nav-link"
+                to="/profile"
+                onClick={this.handleClick}
+              >
                 Profile
               </Link>
             </div>
