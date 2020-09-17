@@ -1,39 +1,138 @@
-.signin-container{
+.signin-container {
   width: 550px;
   height: 500px;
   display: grid;
   grid-template-columns: 20% 30% 30% 20%;
   grid-template-rows: 5% 20% 75%;
-  grid-gap: 10px
+  /* grid-gap: 10px; */
 }
-.flag{
+.flag {
   background: #ff416c;
   background: -webkit-linear-gradient(to left, #ff5316, #ff1c57);
   background: linear-gradient(to left, #ff5316, #ff1c57);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 70%, 0 100%);
   color: white;
+  cursor: pointer;
   /* margin: 5 10px; */
   /* font-size: 22px; */
   text-align: center;
 }
-.flag h1{
+.flag:hover {
+  transform: scale(0.9);
+}
+.flag h1 {
   font-size: 22px;
 }
-.signin{
+.signin {
   grid-column: 2/3;
   grid-row: 1/3;
 }
-.signup{
+.signup {
+  opacity: 0.5;
   grid-column: 3/4;
   grid-row: 1/3;
 }
-.signin-form{
+.signin-form {
   background: #eee;
   grid-row: 2/4;
   grid-column: 1/5;
 }
-.signup-form{
+.signup-form {
   display: none;
+  background: #eee;
   grid-row: 2/4;
   grid-column: 1/5;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 70%;
+  outline: none;
+  border: transparent;
+  border-bottom: 2px solid #ff416c;
+  background: #eee;
+  height: 40px;
+  padding: 0px;
+  font-size: 20px;
+  /* text-align: center; */
+}
+.signin-form form,
+.signup-form form {
+  position: relative;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 140px;
+}
+.signin-form button,
+.signup-form button {
+  width: 90%;
+  height: 34px;
+  font-size: 22px;
+  margin-top: 120px;
+  background: #ff416c;
+  background: -webkit-linear-gradient(to left, #ff5316, #ff1c57);
+  background: linear-gradient(to left, #ff5316, #ff1c57);
+  border: transparent;
+  color: white;
+  border-radius: 10px;
+}
+.signin-form form label,
+.signup-form form label {
+  /* background-color: orange; */
+  margin: 5px 15px;
+  font-size: 20px;
+}
+#signin-email-label {
+  /* background-color: white; */
+  margin-right: 50px;
+}
+
+.toggle-forms .signin-form {
+  display: none;
+}
+
+.toggle-forms .signin.flag {
+  opacity: 0.5;
+}
+.toggle-forms .signup.flag {
+  opacity: 1;
+}
+.toggle-forms .signup-form {
+  display: block;
+}
+#signup-email-label {
+  margin-right: 50px;
+}
+#signup-name-label {
+  margin-right: 46px;
+}
+
+@media (max-width: 900px) {
+  .signin-container {
+    width: 350px;
+  }
+  .signin-form form,
+  .signup-form form {
+    width: 96%;
+  }
+  .signin-form form label,
+  .signup-form form label {
+    /* background-color: orange; */
+    margin: 0px;
+    font-size: 20px;
+  }
+  #signin-email-label {
+    /* background-color: white; */
+    margin-right: 40px;
+  }
+  #signup-email-label {
+    margin-right: 38px;
+  }
+  #signup-name-label {
+    margin-right: 34px;
+  }
+  input[type="password"] {
+    padding-left: 8px;
+  }
 }
