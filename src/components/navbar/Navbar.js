@@ -18,7 +18,7 @@ export default class Navbar extends Component {
         <div className="navbar-container">
           <div className="brand-name">
             <img src="" alt="" />
-            <div className="teachbuddy-name">Bakar</div>
+            <div className="name">Bakar</div>
           </div>
           <FaBars className="fabars" onClick={this.handleClick} size={"30px"} />
         </div>
@@ -30,13 +30,18 @@ export default class Navbar extends Component {
               </Link>
             </div>
             <div>
-              <Link className="nav-link" to="/videos">
+              <Link className="nav-link" to="/signup">
                 Signup
               </Link>
             </div>
             <div>
               <Link className="nav-link" to="/home">
                 Home
+              </Link>
+            </div>
+            <div>
+              <Link className="nav-link" to="/profile">
+                Profile
               </Link>
             </div>
           </div>
