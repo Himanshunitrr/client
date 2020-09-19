@@ -66,6 +66,9 @@ input[type="password"] {
 }
 .signin-form button,
 .signup-form button {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
   width: 90%;
   height: 34px;
   font-size: 22px;

@@ -1,0 +1,46 @@
+.information {
+  position: relative;
+  display: grid;
+  grid-template-columns: 50px 210px 580px;
+  grid-template-rows: 60px 180px;
+  top: 140px;
+  left: 50%;
+  transform: translate(-50%);
+  width: 840px;
+  height: 240px;
+}
+.profile-img-container{
+  grid-column: 2/3;
+  grid-row: 1/3;
+}
+.profile-img {
+  position: relative;
+  z-index: 1;
+  width: 180px;
+  height: 200px;
+  border-radius: 50%;
+  grid-column: 2/3;
+  grid-row: 1/3;
+}
+.profile-name {
+  grid-column: 3/4;
+  grid-row: 1/2;
+  margin-left: 60px;
+}
+.profile-bakar-info {
+  justify-content: space-around;
+  display: flex;
+  grid-row: 2/3;
+  grid-column: 3/4;
+}
+.flag-line {
+  width: 100%;
+  grid-row: 2/3;
+  grid-column: 1/4;
+  height: 32px;
+  margin-top: 60px;
+  background: #ff416c;
+  background: linear-gradient(to right, #ff5316, #ff1c57);
+  background: -webkit-linear-gradient(to right, #ff5316, #ff1c57);
+  clip-path: polygon(0 0, 100% 0, 95% 50%, 100% 100%, 0 100%, 5% 50%);
+}
