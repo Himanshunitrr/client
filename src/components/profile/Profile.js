@@ -29,7 +29,17 @@ export default class Profile extends Component {
           </div>
           <div className="flag-line"></div>
         </div>
-        <div className="posts"></div>
+        <div className="posts">
+          <img src={ProfileImage} alt="profile-image" className="post" />
+          <img src={ProfileImage} alt="profile-image" className="post" />
+          <img src={ProfileImage} alt="profile-image" className="post" />
+          <img src={ProfileImage} alt="profile-image" className="post" />
+          <img src={ProfileImage} alt="profile-image" className="post" />
+          <img src={ProfileImage} alt="profile-image" className="post" />
+          <img src={ProfileImage} alt="profile-image" className="post" />
+          <img src={ProfileImage} alt="profile-image" className="post" />
+          <img src={ProfileImage} alt="profile-image" className="post" />
+        </div>
       </div>
     );
   }

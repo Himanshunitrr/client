@@ -9,7 +9,7 @@
   width: 840px;
   height: 240px;
 }
-.profile-img-container{
+.profile-img-container {
   grid-column: 2/3;
   grid-row: 1/3;
 }
@@ -19,8 +19,6 @@
   width: 180px;
   height: 200px;
   border-radius: 50%;
-  grid-column: 2/3;
-  grid-row: 1/3;
 }
 .profile-name {
   grid-column: 3/4;
@@ -43,4 +41,58 @@
   background: linear-gradient(to right, #ff5316, #ff1c57);
   background: -webkit-linear-gradient(to right, #ff5316, #ff1c57);
   clip-path: polygon(0 0, 100% 0, 95% 50%, 100% 100%, 0 100%, 5% 50%);
+}
+.posts {
+  max-width: 800px;
+  position: relative;
+  top: 200px;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.post {
+  margin: 5px 10px;
+  width: 200px;
+  height: 200px;
+}
+@media (max-width: 900px) {
+  .information {
+    grid-template-columns: 6% 23% 70%;
+    grid-template-rows: 60% 40%;
+    width: 90%;
+    height: 150px;
+  }
+}
+@media (max-width: 720px) {
+  .profile-img-container {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+  .profile-bakar-info {
+    grid-row: 2/3;
+    grid-column: 1/4;
+    margin-top: 40px;
+  }
+  .flag-line {
+    width: 100%;
+    grid-row: 2/3;
+    grid-column: 1/4;
+    height: 12px;
+    margin-top: 20px;
+  }
+  .profile-img {
+    width: 80px;
+    height: 100px;
+  }
+  .profile-name {
+    font-size: 14px;
+    /* margin-bottom: 20px; */
+  }
+  .post {
+  margin: 5px 10px;
+  width: 110px;
+  height: 130px;
+}
 }
