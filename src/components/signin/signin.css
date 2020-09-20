@@ -43,9 +43,12 @@
   grid-row: 2/4;
   grid-column: 1/5;
 }
-input[type="text"],
-input[type="email"],
-input[type="password"] {
+.signin-form input[type="text"],
+.signup-form input[type="text"],
+.signin-form input[type="email"],
+.signup-form input[type="email"],
+.signin-form input[type="password"],
+.signup-form input[type="password"] {
   width: 70%;
   outline: none;
   border: transparent;
