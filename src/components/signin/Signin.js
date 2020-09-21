@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import "./signin.css";
 
 const Signin = () => {
-  const history = useHistory()
+  const history = useHistory();
   const [name, setName] = useState("");
   const [signinPassword, setSigninPassword] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
@@ -24,9 +24,9 @@ const Signin = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if(data.error){}
-        else {
-          history.push("/")
+        if (data.error) {
+        } else {
+          history.push("/");
         }
       })
       .catch((error) => {
@@ -48,13 +48,16 @@ const Signin = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if(data.error){}
-        else {
-          history.push("/signin")
+        if (data.error) {
+        } else {
+          localStorage.setItem("jwt", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
+          history.push("/signin");
         }
-      }).catch(error => {
-        console.log(error)
       })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const toggleForms = (event) => {
