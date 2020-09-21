@@ -1,92 +1,137 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import {useHistory} from "react-router-dom"
 import "./signin.css";
-export default class Signin extends Component {
-  state = {
-    "signinEmail": "",
-    "signinPassword": "",
-    "signupName": "",
-    "signupEmail": "",
-    "signupPassword": "",
+
+const Signin = () => {
+  const history = useHistory()
+  const [name, setName] = useState("");
+  const [signinPassword, setSigninPassword] = useState("");
+  const [signupPassword, setSignupPassword] = useState("");
+  const [signinEmail, setSigninEmail] = useState("");
+  const [signupEmail, setSignupEmail] = useState("");
+
+  const postSigninData = () => {
+    fetch("/signin", {
+      method: "post",
+      headers: {
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: signinEmail,
+        password: signinPassword,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if(data.error){}
+        else {
+          history.push("/")
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-  toggleForms = (event) => {
+  const postSignupData = () => {
+    fetch("/signup", {
+      method: "post",
+      headers: {
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email: signupEmail,
+        password: signupPassword,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if(data.error){}
+        else {
+          history.push("/signin")
+        }
+      }).catch(error => {
+        console.log(error)
+      })
+  };
+
+  const toggleForms = (event) => {
     document.body.classList.toggle("toggle-forms");
   };
-  handleChange = (event) => {
-    this.setState({
-      [event.target.id] : [event.target.value]
-    })
-  };
-  render() {
-    return (
-      <div className="signin-container">
-        <div className="flag signin" onClick={this.toggleForms}>
-          <h1>Signin</h1>
-        </div>
-        <div className="flag signup" onClick={this.toggleForms}>
-          <h1>Signup</h1>
-        </div>
-        <div className="signin-form">
-          <form action="">
-            <label htmlFor="email" id="signin-email-label">
-              Email
-            </label>
-            <input
-              onChange={this.handleChange}
-              type="email"
-              name="email"
-              id="signinEmail"
-              value={this.state.signinEmail}
-              required
-            />
-            <label htmlFor="password">Password</label>
-            <input
-              onChange={this.handleChange}
-              type="password"
-              name="password"
-              id="signinPassword"
-              value={this.state.signinPassword}
-              required
-            />
-            <button>Submit</button>
-          </form>
-        </div>
-        <div className="signup-form">
-          <form action="">
-            <label htmlFor="name" id="signup-name-label">
-              Name
-            </label>
-            <input
-              onChange={this.handleChange}
-              type="text"
-              name="name"
-              id="signupName"
-              value={this.state.signupName}
-              required
-            />
-            <label htmlFor="email" id="signup-email-label">
-              Email
-            </label>
-            <input
-              onChange={this.handleChange}
-              type="email"
-              name="email"
-              id="signupEmail"
-              value={this.state.signupEmail}
-              required
-            />
-            <label htmlFor="password">Password</label>
-            <input
-              onChange={this.handleChange}
-              type="password"
-              name="password"
-              id="signupPassword"
-              value={this.state.signupPassword}
-              required
-            />
-            <button>Submit</button>
-          </form>
+
+  return (
+    <div className="signin-container">
+      <div className="flag signin" onClick={toggleForms}>
+        <h1>Signin</h1>
+      </div>
+      <div className="flag signup" onClick={toggleForms}>
+        <h1>Signup</h1>
+      </div>
+      <div className="signin-form">
+        <div className="form">
+          <label htmlFor="email" id="signin-email-label">
+            Email
+          </label>
+          <input
+            onChange={(e) => setSigninEmail(e.target.value)}
+            type="email"
+            name="email"
+            id="signinEmail"
+            value={signinEmail}
+            required
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            onChange={(e) => setSigninPassword(e.target.value)}
+            type="password"
+            name="signinPassword"
+            id="signinPassword"
+            value={signinPassword}
+            required
+          />
+          <button onClick={() => postSigninData()}>Submit</button>
         </div>
       </div>
-    );
-  }
-}
+      <div className="signup-form">
+        <div className="form">
+          <label htmlFor="name" id="signup-name-label">
+            Name
+          </label>
+          <input
+            onChange={(e) => setName(e.target.value)}
+            type="text"
+            name="name"
+            id="name"
+            value={name}
+            required
+          />
+          <label htmlFor="signupEmail" id="signup-email-label">
+            Email
+          </label>
+          <input
+            onChange={(e) => setSignupEmail(e.target.value)}
+            type="email"
+            name="signupEmail"
+            id="signupEmail"
+            value={signupEmail}
+            required
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            onChange={(e) => setSignupPassword(e.target.value)}
+            type="password"
+            name="signupPassword"
+            id="signupPassword"
+            value={signupPassword}
+            required
+          />
+          <button onClick={() => postSignupData()}>Submit</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Signin;

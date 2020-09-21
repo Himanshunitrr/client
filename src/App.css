@@ -6,7 +6,7 @@ body {
 .signin-container {
   position: relative;
   left: 50%;
-  top: 500px;
+  top: 400px;
   transform: translate(-50%, -50%);
   /* z-index: 100; */
 }
@@ -15,10 +15,10 @@ body {
   top: 100px;
 }
 .create-post{
-  top: 50%;
   left: 50%;
+  top: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1000000;
+  /* z-index: 1000000; */
 }
 @media (max-width: 900px) {
   .signin-container {

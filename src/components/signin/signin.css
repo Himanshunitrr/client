@@ -59,8 +59,8 @@
   font-size: 20px;
   /* text-align: center; */
 }
-.signin-form form,
-.signup-form form {
+.signin-form .form,
+.signup-form .form {
   position: relative;
   width: 90%;
   left: 50%;
@@ -83,8 +83,8 @@
   color: white;
   border-radius: 10px;
 }
-.signin-form form label,
-.signup-form form label {
+.signin-form label,
+.signup-form label {
   /* background-color: orange; */
   margin: 5px 15px;
   font-size: 20px;
@@ -118,12 +118,12 @@
   .signin-container {
     width: 350px;
   }
-  .signin-form form,
-  .signup-form form {
+  .signin-form .form,
+  .signup-form .form {
     width: 96%;
   }
-  .signin-form form label,
-  .signup-form form label {
+  .signin-form label,
+  .signup-form label {
     /* background-color: orange; */
     margin: 0px;
     font-size: 20px;
