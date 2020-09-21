@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {useHistory} from "react-router-dom"
 import "./createPost.css";
 import { GoCloudUpload } from "react-icons/go";
@@ -9,6 +9,32 @@ const CreatePost = () => {
   const [message, setMessage] = useState("");
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
+
+  useEffect(() => {
+    if (url) {
+      fetch("/createpost", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+        body: JSON.stringify({
+          title,
+          body: message,
+          url,
+        }),
+      })
+        .then((data) => {
+          if (data.error) {
+          } else {
+            history.push("/");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [url])
 
   const postDetails = () => {
     const data = new FormData();
@@ -28,24 +54,7 @@ const CreatePost = () => {
       });
     
     
-    fetch("/createpost", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        title,
-        body: message,
-        url
-      })
-    }).then(data => {
-      if(data.error){}
-      else {
-        history.push("/")
-      }
-    }).catch(error => {
-      console.log(error)
-    })
+    
     
   };
 
