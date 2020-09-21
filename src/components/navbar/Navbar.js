@@ -36,10 +36,10 @@ export default class Navbar extends Component {
             <div>
               <Link
                 className="nav-link"
-                to="/signup"
+                to="/createPost"
                 onClick={this.handleClick}
               >
-                Signup
+                CreatePost
               </Link>
             </div>
             <div>
