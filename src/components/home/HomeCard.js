@@ -4,7 +4,7 @@ import "./home-card.css";
 import { AiFillHeart } from "react-icons/ai";
 
 const HomeCard = (props) => {
-  console.log(props.post)
+  // console.log(props.post)
   return (
     <div className="home-card">
       <div className="posted-by">

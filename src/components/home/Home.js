@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HomeCard from "./HomeCard";
+import "./home.css"
 
 const Home = () => {
   const [data, setData] = useState([]);

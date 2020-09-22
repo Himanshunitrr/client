@@ -1,7 +1,16 @@
+:root {
+  --clr-light: #292e33;
+  --clr-hack: #9fef00;
+  --clr-background: #2d3047;
+  --box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
 body {
   margin: 0;
   box-sizing: border-box;
   /* overflow-x: hidden; */
+  background: var(--clr-background);
+  color: var(--clr-hack);
 }
 .signin-container {
   position: relative;

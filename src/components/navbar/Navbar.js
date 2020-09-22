@@ -20,9 +20,20 @@ const  Navbar = () => {
           </Link>
         </div>,
         <div>
+        <Link className="nav-link" to="/" onClick={handleClick}>
+        Home
+        </Link>
+        </div>,
+        <div>
           <Link className="nav-link" to="/createPost" onClick={handleClick}>
             <AiFillPlusCircle/>
           </Link>
+        </div>,
+        <div className="signout-button">
+          <button onClick={() => {
+            localStorage.clear()
+            dispatch({type: "CLEAR"})
+          }}>Signout</button>
         </div>
       ]
     } else {

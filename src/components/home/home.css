@@ -1,0 +1,7 @@
+.cards-container{
+  /* display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(455px, 1fr));
+}
