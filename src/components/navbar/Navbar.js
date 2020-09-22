@@ -1,12 +1,13 @@
 import React, { Component, useContext } from "react";
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link , useHistory} from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import BrandLogo from "./BrandLogo.jpg";
 import { UserContext } from "../../App";
 import {AiFillPlusCircle} from "react-icons/ai"
 
-const  Navbar = () => {
+const Navbar = () => {
+  const history = useHistory()
   const handleClick = (event) => {
     document.body.classList.toggle("nav-toggle-links");
   };
@@ -32,7 +33,9 @@ const  Navbar = () => {
         <div className="signout-button">
           <button onClick={() => {
             localStorage.clear()
-            dispatch({type: "CLEAR"})
+            dispatch({ type: "CLEAR" })
+            handleClick()
+            history.push("/signin")
           }}>Signout</button>
         </div>
       ]

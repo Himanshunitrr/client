@@ -5,6 +5,7 @@
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   font-size: 22px;
   border-radius: 10px;
+  background: var(--clr-light);
 }
 
 .create-post .create-post-form {
@@ -17,9 +18,10 @@
 }
 .create-post input[type="text"] {
   outline: none;
+  background: var(--clr-light);
   border: transparent;
   width: 70%;
-  border-bottom: 2px solid #ff416c;
+  border-bottom: 2px solid var(--clr-hack);
   /* margin-left: 12px; */
   font-size: 22px;
   display: inline-block;
