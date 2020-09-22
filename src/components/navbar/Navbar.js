@@ -1,14 +1,45 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import BrandLogo from "./BrandLogo.jpg";
+import { UserContext } from "../../App";
+import {AiFillPlusCircle} from "react-icons/ai"
 
-export default class Navbar extends Component {
-  handleClick = (event) => {
+const  Navbar = () => {
+  const handleClick = (event) => {
     document.body.classList.toggle("nav-toggle-links");
   };
-  render() {
+  const {state, dispatch} = useContext(UserContext)
+  const renderList = () => {
+    if (state) {
+      return [
+        <div>
+          <Link className="nav-link" to="/profile" onClick={handleClick}>
+            Profile
+          </Link>
+        </div>,
+        <div>
+          <Link className="nav-link" to="/createPost" onClick={handleClick}>
+            <AiFillPlusCircle/>
+          </Link>
+        </div>
+      ]
+    } else {
+      return [
+        <div>
+              <Link
+                className="nav-link"
+                to="/signin"
+                onClick={handleClick}
+              >
+                Signin
+              </Link>
+            </div>
+            
+      ]
+    }
+  }
     return (
       <div>
         <div className="nav-addon">
@@ -20,49 +51,14 @@ export default class Navbar extends Component {
             <img src="" alt="" />
             <div className="name">Bakar</div>
           </div>
-          <FaBars className="fabars" onClick={this.handleClick} size={"30px"} />
+          <FaBars className="fabars" onClick={handleClick} size={"30px"} />
         </div>
         <div className="nav-links" id="nav-links-id">
           <div className="links">
-            <div>
-              <Link
-                className="nav-link"
-                to="/signin"
-                onClick={this.handleClick}
-              >
-                Signin
-              </Link>
-            </div>
-            <div>
-              <Link
-                className="nav-link"
-                to="/createPost"
-                onClick={this.handleClick}
-              >
-                CreatePost
-              </Link>
-            </div>
-            <div>
-              <Link
-                className="nav-link"
-                to="/home"
-                onClick={this.handleClick}
-              >
-                Home
-              </Link>
-            </div>
-            <div>
-              <Link
-                className="nav-link"
-                to="/profile"
-                onClick={this.handleClick}
-              >
-                Profile
-              </Link>
-            </div>
+            {renderList()}
           </div>
         </div>
       </div>
     );
-  }
 }
+export default Navbar

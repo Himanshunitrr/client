@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
+import {UserContext} from "../../App"
 import "./signin.css";
 
 const Signin = () => {
   const history = useHistory();
+  const {state, dispatch} = useContext(UserContext)
   const [name, setName] = useState("");
   const [signinPassword, setSigninPassword] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
@@ -26,6 +28,9 @@ const Signin = () => {
         console.log(data);
         if (data.error) {
         } else {
+          localStorage.setItem("jwt", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
+          dispatch({type: "USER", payload: data.user})
           history.push("/");
         }
       })
@@ -50,8 +55,6 @@ const Signin = () => {
         console.log(data);
         if (data.error) {
         } else {
-          localStorage.setItem("jwt", data.token);
-          localStorage.setItem("user", JSON.stringify(data.user));
           history.push("/signin");
         }
       })
