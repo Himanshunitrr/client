@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import HomeCard from "./HomeCard";
+import {UserContext} from "../../App"
 import "./home.css"
 
 const Home = () => {
   const [data, setData] = useState([]);
+  const {state, dispatch} = useContext(UserContext);
   useEffect(() => {
     fetch("/allpost", {
       headers: {
@@ -74,7 +76,7 @@ const Home = () => {
       {data.map((item) => {
         // console.log(item);
         return (
-          <HomeCard post={item} key={item._id} likePost={likePost}/>
+          <HomeCard post={item} key={item._id} likePost={likePost} state={state}/>
         );
       })}
     </div>

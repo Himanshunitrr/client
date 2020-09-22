@@ -14,7 +14,13 @@ const HomeCard = (props) => {
         <img src={props.post.photo} alt="post" />
       </div>
       <div className="reactions">
-        <AiFillHeart onClick={() => props.likePost(props.post._id)} />
+        <AiFillHeart
+          onClick={
+            // !props.post.likes.includes(props.state._id)
+              () => props.likePost(props.post._id)
+              // : () => { }
+          }
+        />
         <p>{props.post.likes.length}</p>
         <AiFillHeart />
         <AiFillHeart />
