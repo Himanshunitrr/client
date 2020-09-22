@@ -1,46 +1,56 @@
-import React, { Component } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import {UserContext} from "../../App"
 import ProfileImage from "./Profile.jpg";
 import "./profile.css";
-export default class Profile extends Component {
-  render() {
-    return (
-      <div>
-        <div className="information">
-          <div className="profile-img-container">
-            <img
-              src={ProfileImage}
-              alt="profile-image"
-              className="profile-img"
-            />
-          </div>
-          <div className="profile-name">
-            <h1>Himanshu Maurya</h1>
-          </div>
-          <div className="profile-bakar-info">
-            <div className="followers">
-              <p>1M followers</p>
-            </div>
-            <div className="following">
-              <p>0 following</p>
-            </div>
-            <div className="number-of-posts">
-              <p>108 posts</p>
-            </div>
-          </div>
-          <div className="flag-line"></div>
+
+
+const Profile = () => {
+  const [myPics, setMyPics] = useState([])
+  const {state, dispatch} = useContext(UserContext)
+  useEffect(() => {
+    fetch('/mypost', {
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem("jwt")
+      }
+    }).then(res => res.json())
+      .then(result => {
+        setMyPics(result.mypost)
+      })
+  }, [])
+
+  return (
+    <div>
+      <div className="information">
+        <div className="profile-img-container">
+          <img src={ProfileImage} alt="profile-image" className="profile-img" />
         </div>
-        <div className="posts">
-          <img src={ProfileImage} alt="profile-image" className="post" />
-          <img src={ProfileImage} alt="profile-image" className="post" />
-          <img src={ProfileImage} alt="profile-image" className="post" />
-          <img src={ProfileImage} alt="profile-image" className="post" />
-          <img src={ProfileImage} alt="profile-image" className="post" />
-          <img src={ProfileImage} alt="profile-image" className="post" />
-          <img src={ProfileImage} alt="profile-image" className="post" />
-          <img src={ProfileImage} alt="profile-image" className="post" />
-          <img src={ProfileImage} alt="profile-image" className="post" />
+        <div className="profile-name">
+          <h1>{state ? state.name: "loading"}</h1>
         </div>
+        <div className="profile-bakar-info">
+          <div className="followers">
+            <p>1M followers</p>
+          </div>
+          <div className="following">
+            <p>0 following</p>
+          </div>
+          <div className="number-of-posts">
+            <p>108 posts</p>
+          </div>
+        </div>
+        <div className="flag-line"></div>
       </div>
-    );
-  }
-}
+      <div className="posts">
+        <img src={ProfileImage} alt="profile-image" className="post" />
+        {
+          myPics.map(item => {
+            return (
+              <img src={item.photo} alt="profile-image" className="post" key={item._id} />
+            )
+          })
+        }
+      </div>
+    </div>
+  );
+};
+export default Profile;

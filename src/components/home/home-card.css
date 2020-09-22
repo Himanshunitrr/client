@@ -34,6 +34,11 @@
   font-size: 20px;
   grid-row: 3/4;
   grid-column: 2/3;
+  display: flex;
+}
+.reactions p{
+  margin: 0;
+  /* padding: 0; */
 }
 .comments{
   margin-top: 8px;
