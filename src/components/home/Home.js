@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import HomeCard from "./HomeCard";
-import {UserContext} from "../../App"
-import "./home.css"
+import { UserContext } from "../../App";
+import "./home.css";
 
 const Home = () => {
   const [data, setData] = useState([]);
-  const {state, dispatch} = useContext(UserContext);
+  const { state, dispatch } = useContext(UserContext);
   useEffect(() => {
     fetch("/allpost", {
       headers: {
@@ -24,59 +24,98 @@ const Home = () => {
       method: "put",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + localStorage.getItem("jwt")
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
       body: JSON.stringify({
-        postId: id
-      })
-    }).then(res => res.json())
-      .then(result => {
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
         // console.log(result)
-        const newData = data.map(item => {
+        const newData = data.map((item) => {
           if (item._id == result._id) {
-            return result
+            return result;
           } else {
-            return item
+            return item;
           }
-        })
-        setData(newData)
-
-      }).catch(error => {
-        console.log(error)
+        });
+        setData(newData);
       })
-  }
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const unlikePost = (id) => {
     fetch("/unlike", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + localStorage.getItem("jwt")
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
       body: JSON.stringify({
-        postId: id
-      })
-    }).then(res => res.json())
-      .then(result => {
-      // console.log(result)
-        const newData = data.map(item => {
-          if (item._id == result._id) {
-            return result
-          } else {
-            return item
-          }
-        })
-        setData(newData)
-      }).catch(error => {
-      console.log(error)
+        postId: id,
+      }),
     })
-  }
+      .then((res) => res.json())
+      .then((result) => {
+        // console.log(result)
+        const newData = data.map((item) => {
+          if (item._id == result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const makeComment = (text, postId) => {
+    fetch("/comment", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        text,
+        postId
+      })
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result)
+        const newData = data.map((item) => {
+          if (item._id == result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newData);
+        console.log(newData)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="cards-container">
       {data.map((item) => {
         // console.log(item);
         return (
-          <HomeCard post={item} key={item._id} likePost={likePost} state={state}/>
+          <HomeCard
+            post={item}
+            key={item._id}
+            likePost={likePost}
+            state={state}
+            makeComment={makeComment}
+          />
         );
       })}
     </div>
