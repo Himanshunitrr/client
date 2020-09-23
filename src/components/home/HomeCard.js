@@ -1,15 +1,18 @@
 import React from "react";
 import Profile from "./Profile.jpg";
 import "./home-card.css";
-import { AiFillHeart } from "react-icons/ai";
+import { AiFillHeart, AiFillDelete } from "react-icons/ai";
 
 const HomeCard = (props) => {
   // console.log(props.post)
   return (
     <div className="home-card">
       <div className="posted-by">
-        <h2>{props.post.postedBy.name}</h2>
-        <p>{props.post.title}</p>
+        <div className="details">
+          <h2>{props.post.postedBy.name}:</h2>
+          <p>{props.post.title}</p>
+        </div>
+        {props.post.postedBy._id === props.state._id && <AiFillDelete onClick={() => props.deletePost(props.post._id)}/>}
       </div>
       <div className="media">
         <img src={props.post.photo} alt="post" />

@@ -104,6 +104,22 @@ const Home = () => {
       });
   };
 
+  const deletePost = (postId) => {
+    fetch(`/deletepost/${postId}`, {
+      method: "delete",
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem("jwt")
+      }
+    }).then(res => res.json())
+      .then(result => {
+        console.log(result)
+        const newData = data.filter(item => {
+          return item._id !== result._id
+        })
+        setData(newData)
+    })
+  }
+
   return (
     <div className="cards-container">
       {data.map((item) => {
@@ -115,6 +131,7 @@ const Home = () => {
             likePost={likePost}
             state={state}
             makeComment={makeComment}
+            deletePost={deletePost}
           />
         );
       })}
