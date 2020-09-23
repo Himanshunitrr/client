@@ -1,6 +1,5 @@
 ## Source code of front-end of [Haalchaal(A social media platform)](https://haalchaal.herokuapp.com)
-#### For contribution read [contributing.md]()
-
+### For contribution read [CONTRIBUTING.md](https://github.com/Himanshunitrr/haalchaal-frontEnd/blob/master/CONTRIBUTING.md)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
