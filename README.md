@@ -1,4 +1,4 @@
-## Source code of front-end of [Haalchaal(A social media platform)](https://haalchaal.herokuapp.com/createPost)
+## Source code of front-end of [Haalchaal(A social media platform)](https://haalchaal.herokuapp.com)
 #### For contribution read [contributing.md]()
 
 
