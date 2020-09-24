@@ -11,6 +11,7 @@ import Signin from "./components/signin/Signin";
 import Profile from "./components/profile/Profile";
 import Home from "./components/home/Home";
 import CreatePost from "./components/createPost/CreatePost";
+import UserProfile from "./components/userProfile/UserProfile";
 import { reducer, initialState } from "./reducers/userReducer";
 
 export const UserContext = createContext();
@@ -24,15 +25,16 @@ const Routing = () => {
       dispatch({ type: "USER", payload: user });
       // history.push("/");
     } else {
-      history.push("/signin ");
+      history.push("/signin");
     }
   }, []);
   return (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/signin" component={Signin} />
-      <Route path="/profile" component={Profile} />
+      <Route exact path="/profile" component={Profile} />
       <Route path="/createPost" component={CreatePost} />
+      <Route path="/profile/:userid" component={UserProfile} />
     </Switch>
   );
 };

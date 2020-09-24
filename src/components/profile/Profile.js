@@ -41,7 +41,6 @@ const Profile = () => {
         <div className="flag-line"></div>
       </div>
       <div className="posts">
-        <img src={ProfileImage} alt="profile-image" className="post" />
         {
           myPics.map(item => {
             return (

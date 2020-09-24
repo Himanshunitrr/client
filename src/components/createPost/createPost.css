@@ -25,6 +25,7 @@
   /* margin-left: 12px; */
   font-size: 22px;
   display: inline-block;
+  color: var(--clr-hack);
 }
 .title-wrapper input[type="text"] {
   /* margin-left: 70px; */
