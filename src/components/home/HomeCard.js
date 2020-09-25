@@ -2,6 +2,7 @@ import React from "react";
 import Profile from "./Profile.jpg";
 import "./home-card.css";
 import { AiFillHeart, AiFillDelete } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const HomeCard = (props) => {
   // console.log(props.post)
@@ -9,10 +10,16 @@ const HomeCard = (props) => {
     <div className="home-card">
       <div className="posted-by">
         <div className="details">
-          <h2>{props.post.postedBy.name}:</h2>
+          <h2>
+            <Link to={props.post.postedBy._id !== props.state._id ? "/profile/" + props.post.postedBy._id : "/profile"} className="profile-link">
+              {props.post.postedBy.name}
+            </Link>:
+          </h2>
           <p>{props.post.title}</p>
         </div>
-        {props.post.postedBy._id === props.state._id && <AiFillDelete onClick={() => props.deletePost(props.post._id)}/>}
+        {props.post.postedBy._id === props.state._id && (
+          <AiFillDelete onClick={() => props.deletePost(props.post._id)} />
+        )}
       </div>
       <div className="media">
         <img src={props.post.photo} alt="post" />

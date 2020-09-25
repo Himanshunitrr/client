@@ -27,9 +27,19 @@
 }
 .profile-bakar-info {
   justify-content: space-around;
+  align-items: center;
   display: flex;
   grid-row: 2/3;
   grid-column: 3/4;
+  transform: translateY(-55px);
+}
+.profile-bakar-info button {
+  background: var(--clr-hack);
+  outline: none;
+  border-radius: 3px;
+  border: transparent;
+  font-weight: bold;
+  cursor: pointer;
 }
 .flag-line {
   width: 100%;
@@ -65,6 +75,13 @@
     grid-template-rows: 60% 40%;
     width: 90%;
     height: 150px;
+  }
+  .profile-bakar-info {
+    transform: translateY(0px);
+  }
+  .profile-img {
+    width: 150px;
+    height: 180px;
   }
 }
 @media (max-width: 800px) {

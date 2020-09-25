@@ -35,7 +35,7 @@ const Profile = () => {
             <p>0 following</p>
           </div>
           <div className="number-of-posts">
-            <p>108 posts</p>
+            <p>{myPics.length} posts</p>
           </div>
         </div>
         <div className="flag-line"></div>

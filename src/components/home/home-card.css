@@ -96,8 +96,11 @@
   align-items: center;
 }
 .details h2{
-  color: #ff1c57;
   margin-right: 6px;
+}
+.profile-link{
+  color: #ff1c57;
+  text-decoration: none;
 }
 @media(max-width: 550px){
   .home-card{
