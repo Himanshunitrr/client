@@ -102,17 +102,17 @@
   margin-right: 50px;
 }
 
-.toggle-forms .signin-form {
+.toggle-forms.signin-form {
   display: none;
 }
 
-.toggle-forms .signin.flag {
+.toggle-forms.signin.flag {
   opacity: 0.5;
 }
-.toggle-forms .signup.flag {
+.toggle-forms.signup.flag {
   opacity: 1;
 }
-.toggle-forms .signup-form {
+.toggle-forms.signup-form {
   display: block;
 }
 .signin-email-input{

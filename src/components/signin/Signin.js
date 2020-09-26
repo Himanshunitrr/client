@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../../App";
 import "./signin.css";
@@ -7,10 +7,15 @@ const Signin = () => {
   const history = useHistory();
   const { state, dispatch } = useContext(UserContext);
   const [name, setName] = useState("");
+  const [toggleSignin, setToggleSignin] = useState(false);
   const [signinPassword, setSigninPassword] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
   const [signinEmail, setSigninEmail] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
+
+  useEffect(() => {
+    setToggleSignin(false);
+  }, []);
 
   const postSigninData = () => {
     fetch("/signin", {
@@ -61,21 +66,28 @@ const Signin = () => {
       .catch((error) => {
         console.log(error);
       });
+    setToggleSignin(false);
   };
 
   const toggleForms = (event) => {
-    document.body.classList.toggle("toggle-forms");
+    toggleSignin ? setToggleSignin(false) : setToggleSignin("toggle-forms");
+    // document.body.classList.toggle("toggle-forms");
   };
-
+  const toggleClass = toggleSignin ? " toggle-forms" : "";
   return (
     <div className="signin-container">
-      <div className="flag signin" onClick={toggleForms}>
+      <div
+        className={"flag signin" + toggleClass}
+        onClick={toggleForms}>
         <h1>Signin</h1>
       </div>
-      <div className="flag signup" onClick={toggleForms}>
+      <div
+        className={"flag signup" + toggleClass}
+        onClick={toggleForms}
+      >
         <h1>Signup</h1>
       </div>
-      <div className="signin-form">
+      <div className={"signin-form" + toggleClass}>
         <div className="form">
           <div className="signin-email-input">
             <label htmlFor="email" id="">
@@ -104,7 +116,7 @@ const Signin = () => {
           <button onClick={() => postSigninData()}>Submit</button>
         </div>
       </div>
-      <div className="signup-form">
+      <div className={"signup-form" + toggleClass}>
         <div className="form">
           <div className="signup-name-input">
             <label htmlFor="name" id="">

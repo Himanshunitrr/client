@@ -19,26 +19,33 @@ const UserProfile = () => {
       .then((res) => res.json())
       .then((result) => {
         // console.log(result)
+        
         setUserProfile(result);
-        // console.log(userProfile);
       });
-  }, []);
+  }, [userProfile]);
 
-  const followUser = () => {
-    // console.log("I was clicked")
-    fetch("/follow", {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
-      },
-      body: JSON.stringify({
-        followId: userid,
+  const followUser = () => {    
+      fetch("/follow", {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+        body: JSON.stringify({
+          followId: userid,
+        }),
       })
-    }).then(res => res.json())
-    .then(data => {
-      console.log(data)
-    })
+        .then((res) => res.json())
+        .then((result) => {
+          console.log(result)
+          setUserProfile({
+            ...userProfile,
+            followers: result.follwers
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
   };
 
   return (
@@ -52,10 +59,10 @@ const UserProfile = () => {
         </div>
         <div className="profile-bakar-info">
           <div className="followers">
-            <p>1M followers</p>
+            <p>{userProfile? userProfile.user.followers.length: ""} followers</p>
           </div>
           <div className="following">
-            <p>0 following</p>
+            <p>{userProfile? userProfile.user.following.length: ""} following</p>
           </div>
           <div className="number-of-posts">
             <p>{userProfile ? userProfile.posts.length : ""} posts</p>
