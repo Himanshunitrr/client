@@ -30,6 +30,11 @@ const Navbar = () => {
             <AiFillPlusCircle />
           </Link>
         </div>,
+        <div>
+          <Link className="nav-link" to="/friends" onClick={handleClick}>
+            Friends Haalchaal
+          </Link>
+        </div>,
         <div className="signout-button">
           <button
             onClick={() => {

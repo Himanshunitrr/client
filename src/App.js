@@ -13,6 +13,7 @@ import Home from "./components/home/Home";
 import CreatePost from "./components/createPost/CreatePost";
 import UserProfile from "./components/userProfile/UserProfile";
 import { reducer, initialState } from "./reducers/userReducer";
+import Friends from "./components/friends/Friends";
 
 export const UserContext = createContext();
 
@@ -31,6 +32,7 @@ const Routing = () => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
+      <Route exact path="/friends" component={Friends} />
       <Route path="/signin" component={Signin} />
       <Route exact path="/profile" component={Profile} />
       <Route path="/createPost" component={CreatePost} />
