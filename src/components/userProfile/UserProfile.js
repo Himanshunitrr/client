@@ -18,13 +18,15 @@ const UserProfile = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        // console.log(result)
-        
+        // console.log(result);
+
         setUserProfile(result);
       });
   }, [userProfile]);
 
-  const followUser = () => {    
+  const followUser = () => {
+    // console.log(state)
+    if (userid !== state._id) {
       fetch("/follow", {
         method: "put",
         headers: {
@@ -37,15 +39,43 @@ const UserProfile = () => {
       })
         .then((res) => res.json())
         .then((result) => {
-          console.log(result)
+          console.log(result);
           setUserProfile({
             ...userProfile,
-            followers: result.follwers
+            followers: result.followers,
           });
         })
         .catch((error) => {
           console.log(error);
         });
+    }
+    
+  };
+  const unfollowUser = () => {
+    if (userid !== state._id) {
+      fetch("/unfollow", {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+        body: JSON.stringify({
+          followId: userid,
+        }),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          console.log(result);
+          setUserProfile({
+            ...userProfile,
+            followers: result.followers,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    
   };
 
   return (
@@ -59,16 +89,24 @@ const UserProfile = () => {
         </div>
         <div className="profile-bakar-info">
           <div className="followers">
-            <p>{userProfile? userProfile.user.followers.length: ""} followers</p>
+            <p>
+              {userProfile ? userProfile.user.followers.length : ""} followers
+            </p>
           </div>
           <div className="following">
-            <p>{userProfile? userProfile.user.following.length: ""} following</p>
+            <p>
+              {userProfile ? userProfile.user.following.length : ""} following
+            </p>
           </div>
           <div className="number-of-posts">
             <p>{userProfile ? userProfile.posts.length : ""} posts</p>
           </div>
-          <div className="follow-buton">
-            <button onClick={() => followUser()}>Follow</button>
+          <div className="follow-button">
+            {state && userid == state._id ? "" : userProfile && userProfile.user.followers.includes(state._id) ? (
+              <button onClick={() => unfollowUser()}>Unfollow</button>
+            ) : (
+              <button onClick={() => followUser()}>Follow</button>
+            )}
           </div>
         </div>
         <div className="flag-line"></div>
