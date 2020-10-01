@@ -12,6 +12,8 @@ const Signin = () => {
   const [signupPassword, setSignupPassword] = useState("");
   const [signinEmail, setSigninEmail] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
+  const [image, setImage] = useState("");
+  const [url, setUrl] = useState("");
 
   useEffect(() => {
     setToggleSignin(false);
@@ -69,6 +71,24 @@ const Signin = () => {
     setToggleSignin(false);
   };
 
+  const uploadProfilePic = () => {
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "bakar-mern");
+    data.append("cloud_name", "bakar");
+    fetch("https://api.cloudinary.com/v1_1/bakar/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUrl(data.secure_url);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const toggleForms = (event) => {
     toggleSignin ? setToggleSignin(false) : setToggleSignin("toggle-forms");
     // document.body.classList.toggle("toggle-forms");
@@ -76,15 +96,10 @@ const Signin = () => {
   const toggleClass = toggleSignin ? " toggle-forms" : "";
   return (
     <div className="signin-container">
-      <div
-        className={"flag signin" + toggleClass}
-        onClick={toggleForms}>
+      <div className={"flag signin" + toggleClass} onClick={toggleForms}>
         <h1>Signin</h1>
       </div>
-      <div
-        className={"flag signup" + toggleClass}
-        onClick={toggleForms}
-      >
+      <div className={"flag signup" + toggleClass} onClick={toggleForms}>
         <h1>Signup</h1>
       </div>
       <div className={"signin-form" + toggleClass}>
@@ -154,6 +169,17 @@ const Signin = () => {
               value={signupPassword}
               required
             />
+          </div>
+          <div className="profile-img-upload">
+            <label htmlFor="select-image" className="upload-img-profile">
+              <input
+                type="file"
+                name=""
+                id="select-image"
+                onChange={(e) => setImage(e.target.files[0])}
+              />
+              Select Profile Picture
+            </label>
           </div>
           <button onClick={() => postSignupData()}>Submit</button>
         </div>

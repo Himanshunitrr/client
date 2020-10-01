@@ -101,6 +101,27 @@
   /* background-color: white; */
   margin-right: 50px;
 }
+.upload-img-profile {
+  position: relative;
+  grid-row: 2/4;
+  grid-column: 3/4;
+  background: var(--clr-hack);
+  color: black;
+  top: 40px;
+  /* display: inline-block; */
+  border-radius: 5px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  left: 50%;
+  transform: translate(-50%);
+  width: 200px;
+}
+.upload-img-profile input[type="file"] {
+  display: none;
+}
 
 .toggle-forms.signin-form {
   display: none;
@@ -115,27 +136,27 @@
 .toggle-forms.signup-form {
   display: block;
 }
-.signin-email-input{
+.signin-email-input {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.signin-password-input{
+.signin-password-input {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.signup-name-input{
+.signup-name-input {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.signup-email-input{
+.signup-email-input {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.signup-password-input{
+.signup-password-input {
   width: 100%;
   display: flex;
   justify-content: space-between;
