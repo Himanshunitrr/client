@@ -13,11 +13,17 @@ const Signin = () => {
   const [signinEmail, setSigninEmail] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
   const [image, setImage] = useState("");
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState(undefined);
 
   useEffect(() => {
     setToggleSignin(false);
   }, []);
+
+  useEffect(() => {
+    if (url) {
+      uploadSignupFields()
+    }
+  }, [url])
 
   const postSigninData = () => {
     fetch("/signin", {
@@ -45,7 +51,7 @@ const Signin = () => {
         console.log(error);
       });
   };
-  const postSignupData = () => {
+  const uploadSignupFields = () => {
     fetch("/signup", {
       method: "post",
       headers: {
@@ -55,6 +61,7 @@ const Signin = () => {
         name,
         email: signupEmail,
         password: signupPassword,
+        pic: url
       }),
     })
       .then((res) => res.json())
@@ -68,6 +75,15 @@ const Signin = () => {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  const postSignupData = () => {
+    if (image) {
+      uploadProfilePic()
+    } else {
+      uploadSignupFields()
+    }
+    
     setToggleSignin(false);
   };
 

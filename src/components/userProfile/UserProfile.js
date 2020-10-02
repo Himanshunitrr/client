@@ -82,7 +82,7 @@ const UserProfile = () => {
     <div>
       <div className="information">
         <div className="profile-img-container">
-          <img src={ProfileImage} alt="profile-image" className="profile-img" />
+          <img src={userProfile ? userProfile.user.pic : ""} alt="profile-image" className="profile-img" />
         </div>
         <div className="profile-name">
           <h1>{userProfile ? userProfile.user.name : ""}</h1>

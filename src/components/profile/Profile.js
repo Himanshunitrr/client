@@ -17,22 +17,26 @@ const Profile = () => {
         setMyPics(result.mypost)
       })
   }, [])
-
+  // console.log(state)
   return (
     <div>
       <div className="information">
         <div className="profile-img-container">
-          <img src={ProfileImage} alt="profile-image" className="profile-img" />
+          <img
+            src={state ? state.pic : "loading"}
+            alt="profile-image"
+            className="profile-img"
+          />
         </div>
         <div className="profile-name">
-          <h1>{state ? state.name: "loading"}</h1>
+          <h1>{state ? state.name : "loading"}</h1>
         </div>
         <div className="profile-bakar-info">
           <div className="followers">
-            <p>1M followers</p>
+            <p>{state ? state.followers.length : ""} Followers</p>
           </div>
           <div className="following">
-            <p>0 following</p>
+            <p>{state ? state.following.length : ""} Following</p>
           </div>
           <div className="number-of-posts">
             <p>{myPics.length} posts</p>
@@ -41,13 +45,16 @@ const Profile = () => {
         <div className="flag-line"></div>
       </div>
       <div className="posts">
-        {
-          myPics.map(item => {
-            return (
-              <img src={item.photo} alt="profile-image" className="post" key={item._id} />
-            )
-          })
-        }
+        {myPics.map((item) => {
+          return (
+            <img
+              src={item.photo}
+              alt="profile-image"
+              className="post"
+              key={item._id}
+            />
+          );
+        })}
       </div>
     </div>
   );
